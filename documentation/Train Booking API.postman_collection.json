@@ -1,0 +1,133 @@
+{
+  "info": {
+    "name": "Train Booking API",
+    "description": "Simple Postman collection for the Segment Based Train Seat Booking System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Stations",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/stations",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "stations"]
+        }
+      }
+    },
+    {
+      "name": "Get Availability",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/availability?from=0&to=3",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "availability"],
+          "query": [
+            { "key": "from", "value": "0" },
+            { "key": "to", "value": "3" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create Booking",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"seatId\": 1,\n  \"fromStationIdx\": 0,\n  \"toStationIdx\": 3,\n  \"passengerName\": \"Ravindu\",\n  \"passengerEmail\": \"ravindu@example.com\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/bookings",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "bookings"]
+        }
+      }
+    },
+    {
+      "name": "Get Booking",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/bookings/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "bookings", "1"]
+        }
+      }
+    },
+    {
+      "name": "Cancel Booking",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/bookings/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "bookings", "1"]
+        }
+      }
+    },
+    {
+      "name": "Join Waitlist",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fromStationIdx\": 0,\n  \"toStationIdx\": 3,\n  \"passengerName\": \"Kavindu\",\n  \"passengerEmail\": \"kavindu@example.com\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/waitlist",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "waitlist"]
+        }
+      }
+    },
+    {
+      "name": "Get Waitlist",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/waitlist/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "waitlist", "1"]
+        }
+      }
+    },
+    {
+      "name": "Admin Dashboard",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/admin/dashboard",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "admin", "dashboard"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ]
+}
