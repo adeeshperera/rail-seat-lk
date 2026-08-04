@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: train-booking-system
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/trainbooking}
+    username: ${SPRING_DATASOURCE_USERNAME:trainuser}
+    password: ${SPRING_DATASOURCE_PASSWORD:trainpass123}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+server:
+  port: 8080
+
+# Custom app config
+app:
+  fare:
+    base-rate-per-km: ${FARE_BASE_RATE:15}
+  seed:
+    reserved-coaches: ${RESERVED_COACHES:3}
+    unreserved-coaches: ${UNRESERVED_COACHES:5}
+    seats-per-coach: ${SEATS_PER_COACH:50}
